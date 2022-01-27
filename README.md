@@ -71,12 +71,11 @@ You can deploy this bot anywhere.
 
 <i>**[Watch Deploying Tutorial...](https://youtu.be/KTearEPhumc)**</i>
 
-Deploy to heroku.
-<p align="center">
-<a href="https://heroku.com/deploy?template=https://github.com/Thorappan7/Adv-Auto-Filter-Bot-V2>
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
-</p>
+Deploy to heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Thorappan7/Adv-Auto-Filter-Bot-V2)
+
+
 
 <details><summary>Deploy To VPS</summary>
 <p>
