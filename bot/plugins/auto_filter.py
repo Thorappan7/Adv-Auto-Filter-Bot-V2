@@ -205,7 +205,7 @@ async def auto_filter(bot, update):
             await update.reply_photo(
                 photo = "https://telegra.ph/file/65ba65b8eab1064c901cc.jpg",
                 chat_id = update.chat.id,                           
-                caption = TEXT.format(message.from_user.mention),
+                caption = TEXT,
                 reply_markup=reply_markup,
                 parse_mode="html",
                 reply_to_message_id=update.message_id
