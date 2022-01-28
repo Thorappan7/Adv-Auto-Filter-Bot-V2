@@ -203,8 +203,7 @@ async def auto_filter(bot, update):
         try:
             TEXT=f"Found {(len_results)} Results For Your Query: <code>{query}</code>",
             await update.reply_photo(
-                photo = "https://telegra.ph/file/65ba65b8eab1064c901cc.jpg",
-                chat_id = update.chat.id,                           
+                photo = "https://telegra.ph/file/65ba65b8eab1064c901cc.jpg",                                        
                 caption = TEXT,
                 reply_markup=reply_markup,
                 parse_mode="html",
