@@ -5,12 +5,11 @@
 class Translation(object):
     
     START_TEXT = """<b>Hey {}!!</b>
-<i> Hi {} I exclusively Made for @Malayalam_Music Channel Please dont try to add me in your group it won't work 
+<i>I exclusively Made for @Malayalam_Music Channel Please dont try to add me in your group it won't work 
 Thanks for using me ❤️
 </i>"""    
     
 
-"""
     
     ABOUT_TEXT = """
 <b>📌 Name</b> : <code> Auto Filter Bot</code>   
