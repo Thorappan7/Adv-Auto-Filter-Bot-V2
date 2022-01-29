@@ -118,15 +118,13 @@ async def cb_navg(bot, update: CallbackQuery):
             invite_link = y["invite_link"]
             
             if ((len(ibuttons)%2) == 0):
-                ibuttons.append(
-                    [
-                        InlineKeyboardButton(f"⚜ {chat_name} ⚜", url=invite_link)
-                    ]        
-                )
+                ibuttons.append([
+                        InlineKeyboardButton(f" {chat_name} ", url=invite_link)
+                ])
             else:
-                ibuttons[-1].append(
-                    InlineKeyboardButton(f"⚜ {chat_name} ⚜", url=invite_link)                        
-                )
+                ibuttons[-1].append([
+                    InlineKeyboardButton(f" {chat_name} ", url=invite_link)                        
+                ])
             
         for x in ibuttons:
             temp_results.insert(0, x)
@@ -285,12 +283,10 @@ async def cb_channel_list(bot, update: CallbackQuery):
         
     buttons = []
 
-    buttons.append(
-        [
+    buttons.append([
             InlineKeyboardButton("🔙 Back", callback_data="settings")),          
             InlineKeyboardButton("Close 🔐", callback_data="close")
-        ]
-    ) 
+    ])
     if channel_name_list:
         
         text=f"<i>List Of Connected Channels With <code>{chat_name}</code> With There Settings..</i>\n"
