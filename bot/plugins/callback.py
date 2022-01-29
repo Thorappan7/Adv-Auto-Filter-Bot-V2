@@ -230,12 +230,10 @@ async def cb_warn(bot, update: CallbackQuery):
         text=f"<i>Are You Sure That You Want To Clear All Filter From This Chat</i> <code>{channel_name}</code><i>???</i>\n"
         text+=f"\n<i>This Will Erase All Files From DB..</i>"
         
-    buttons = [
-        [
-            InlineKeyboardButton("Yes", callback_data=f"{action}({channel_id}|{channel_name})"), 
-            InlineKeyboardButton("No", callback_data="close")
-        ]
-    ]
+    buttons = [[      
+        InlineKeyboardButton("Yes", callback_data=f"{action}({channel_id}|{channel_name})"), 
+        InlineKeyboardButton("No", callback_data="close")
+    ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
@@ -244,8 +242,6 @@ async def cb_warn(bot, update: CallbackQuery):
         reply_markup=reply_markup,
         parse_mode="html"
     )
-
-
 
 @Client.on_callback_query(filters.regex(r"channel_list\((.+)\)"), group=2)
 async def cb_channel_list(bot, update: CallbackQuery):    
@@ -291,18 +287,10 @@ async def cb_channel_list(bot, update: CallbackQuery):
 
     buttons.append(
         [
-            InlineKeyboardButton
-                (
-                    "🔙 Back", callback_data="settings"
-                ),
-            
-            InlineKeyboardButton
-                (
-                    "Close 🔐", callback_data="close"
-                )
+            InlineKeyboardButton("🔙 Back", callback_data="settings")),          
+            InlineKeyboardButton("Close 🔐", callback_data="close")
         ]
     ) 
-
     if channel_name_list:
         
         text=f"<i>List Of Connected Channels With <code>{chat_name}</code> With There Settings..</i>\n"
@@ -339,7 +327,6 @@ async def cb_channel_list(bot, update: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode="html"
         )
-
 
 
 @Client.on_callback_query(filters.regex(r"info\((.+)\)"), group=2)
@@ -391,8 +378,7 @@ async def cb_info(bot, update: CallbackQuery):
         ]]
 
     else:
-        buttons = [[
-                    
+        buttons = [[                  
              InlineKeyboardButton("💠 Connect 💠", callback_data=f"warn({channel_id}|{channel_name}|connect)"),                                            
              InlineKeyboardButton("Delete ❌", callback_data=f"warn({channel_id}|{channel_name}|c_delete)")                                           
         ]]
@@ -414,8 +400,6 @@ async def cb_info(bot, update: CallbackQuery):
     await update.message.edit_text(
             text, reply_markup=reply_markup, parse_mode="html"
         )
-
-
 
 @Client.on_callback_query(filters.regex(r"^connect\((.+)\)"), group=2)
 async def cb_connect(bot, update: CallbackQuery):
@@ -453,9 +437,7 @@ async def cb_connect(bot, update: CallbackQuery):
     buttons = [[
              InlineKeyboardButton("🚨 Disconnect 🚨", callback_data=f"warn({channel_id}|{channel_name}|disconnect)"),                       
              InlineKeyboardButton("Delete ❌", callback_data=f"warn({channel_id}|{channel_name}|c_delete)")                  
-    ]]
-
-    
+    ]]    
     buttons = [[
                     
              InlineKeyboardButton("💠 Connect 💠", callback_data=f"warn({channel_id}|{channel_name}|connect)"),                                            
@@ -466,8 +448,8 @@ async def cb_connect(bot, update: CallbackQuery):
         [
              InlineKeyboardButton("Delete Filters ⚠", callback_data=f"warn({channel_id}|{channel_name}|f_delete)")                 
         ]
-    )
-    
+    )  
+ 
     buttons.append(
         [
              InlineKeyboardButton("🔙 Back", callback_data=f"channel_list({chat_id})")                 
@@ -481,7 +463,6 @@ async def cb_connect(bot, update: CallbackQuery):
     await update.message.edit_text(
             text, reply_markup=reply_markup, parse_mode="html"
         )
-
 
 
 @Client.on_callback_query(filters.regex(r"disconnect\((.+)\)"), group=2)
@@ -537,6 +518,7 @@ async def cb_disconnect(bot, update: CallbackQuery):
     await update.message.edit_text(
             text, reply_markup=reply_markup, parse_mode="html"
         )
+
 
 @Client.on_callback_query(filters.regex(r"c_delete\((.+)\)"), group=2)
 async def cb_channel_delete(bot, update: CallbackQuery):
@@ -605,9 +587,8 @@ async def cb_filters_delete(bot, update: CallbackQuery):
     text =f"All Filters Of <code>{channel_id}[{channel_name}]</code> Has Been Deleted Sucessfully From My DB.."
 
     buttons=[[
-        
-             InlineKeyboardButton("Back", callback_data="settings"),       
-             InlineKeyboardButton("Close", callback_data="close")       
+        InlineKeyboardButton("Back", callback_data="settings"),       
+        InlineKeyboardButton("Close", callback_data="close")       
     ]]
 
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -1032,8 +1013,7 @@ async def cb_show_invites(bot, update: CallbackQuery):
             InlineKeyboardButton("Disable ❌", callback_data=f"set(showInv|False|{chat_id}|{value})")
             ],[
             InlineKeyboardButton("Back 🔙", callback_data=f"config({chat_id})")           
-        ]]
-    
+        ]]   
     else:
         buttons =[[       
             InlineKeyboardButton("Enable ✔", callback_data=f"set(showInv|True|{chat_id}|{value})")
