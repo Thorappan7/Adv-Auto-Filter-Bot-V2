@@ -201,7 +201,7 @@ async def auto_filter(bot, update):
         reply_markup = InlineKeyboardMarkup(result[0])
 
         try:
-            TEXT=f"Hey {}/nFound {(len_results)} Results For Your Query:\n <code>{query}</code>",
+            TEXT=f"Hey {update.from_user.mention}/nFound {(len_results)} Results For Your Query:\n <code>{query}</code>",
             await update.reply_photo(
                 photo = "https://telegra.ph/file/3c629ea9b9e21072201c3.jpg",                                        
                 caption = TEXT.format(update.from_user.mention),
