@@ -39,12 +39,12 @@ async def start(bot, update):
             LOGGER(__name__).error(e)
         return
 
-        buttons = [[
-            InlineKeyboardButton('Join Channel 💠', url='https://t.me/Malayalam_Music'),
-            InlineKeyboardButton('Join Group ♻️', url ='https://t.me/Malayalam_Musics')
-            ],[
-            InlineKeyboardButton('About 🎯', callback_data="about")
-        ]]
+    buttons = [[
+        InlineKeyboardButton('Join Channel 💠', url='https://t.me/Malayalam_Music'),
+        InlineKeyboardButton('Join Group ♻️', url ='https://t.me/Malayalam_Musics')
+        ],[
+        InlineKeyboardButton('About 🎯', callback_data="about")
+    ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
