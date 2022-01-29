@@ -30,30 +30,21 @@ async def start(bot, update):
                 quote=True,
                 caption = caption,
                 parse_mode="html",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton
-                                (
-                                    'Developers', url="https://t.me/CrazyBotsz"
-                                )
-                        ]
-                    ]
-                )
+                reply_markup=InlineKeyboardMarkup([            
+                      [InlineKeyboardButton('Channel💠', url="https://t.me/Malayalam_Music")]                                      
+                ])
             )
         except Exception as e:
             await update.reply_text(f"<b>Error:</b>\n<code>{e}</code>", True, parse_mode="html")
             LOGGER(__name__).error(e)
         return
 
-    buttons = [[
-        InlineKeyboardButton('Developers', url='https://t.me/CrazyBotsz'),
-        InlineKeyboardButton('Source Code 🧾', url ='https://github.com/CrazyBotsz/Adv-Auto-Filter-Bot-V2')
-    ],[
-        InlineKeyboardButton('Support 🛠', url='https://t.me/CrazyBotszGrp')
-    ],[
-        InlineKeyboardButton('Help ⚙', callback_data="help")
-    ]]
+        buttons = [[
+            InlineKeyboardButton('Join Channel 💠', url='https://t.me/Malayalam_Music'),
+            InlineKeyboardButton('Join Group ♻️', url ='https://t.me/Malayalam_Musics')
+            ],[
+            InlineKeyboardButton('About 🎯', callback_data="about")
+        ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
@@ -65,27 +56,6 @@ async def start(bot, update):
         parse_mode="html",
         reply_to_message_id=update.message_id
     )
-
-
-@Client.on_message(filters.command(["help"]) & filters.private, group=1)
-async def help(bot, update):
-    buttons = [[
-        InlineKeyboardButton('Home ⚡', callback_data='start'),
-        InlineKeyboardButton('About 🚩', callback_data='about')
-    ],[
-        InlineKeyboardButton('Close 🔐', callback_data='close')
-    ]]
-    
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.HELP_TEXT,
-        reply_markup=reply_markup,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
-
 
 @Client.on_message(filters.command(["about"]) & filters.private, group=1)
 async def about(bot, update):
