@@ -284,7 +284,7 @@ async def cb_channel_list(bot, update: CallbackQuery):
     buttons = []
 
     buttons.append([
-            InlineKeyboardButton("🔙 Back", callback_data="settings")),          
+            InlineKeyboardButton("🔙 Back", callback_data="settings"),          
             InlineKeyboardButton("Close 🔐", callback_data="close")
     ])
     if channel_name_list:
