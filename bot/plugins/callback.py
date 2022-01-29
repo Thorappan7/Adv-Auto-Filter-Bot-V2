@@ -1104,8 +1104,7 @@ async def cb_accuracy(bot, update: CallbackQuery):
     chat_id = update.message.chat.id
     chat_name = update.message.chat.title
     user_id = update.from_user.id
-    query_data = update.data
-    
+    query_data = update.data    
     
     if user_id not in VERIFY.get(str(chat_id)):
         return
@@ -1137,7 +1136,6 @@ async def cb_accuracy(bot, update: CallbackQuery):
     await update.message.edit_text(
         text, reply_markup=reply_markup, parse_mode="html"
     )
-
 
 @Client.on_callback_query(filters.regex(r"set\((.+)\)"), group=2)
 async def cb_set(bot, update: CallbackQuery):
@@ -1209,26 +1207,15 @@ async def cb_set(bot, update: CallbackQuery):
     
     text=f"Your Request Was Updated Sucessfully....\nNow All Upcoming Results Will Show According To This Settings..."
         
-    buttons = [
-        [
-            InlineKeyboardButton
-                (
-                    "Back 🔙", callback_data=f"config({chat_id})"
-                ),
-            
-            InlineKeyboardButton
-                (
-                    "Close 🔐", callback_data="close"
-                )
-        ]
-    ]
-    
+    buttons = [[
+        InlineKeyboardButton("Back 🔙", callback_data=f"config({chat_id})"),        
+        InlineKeyboardButton("Close 🔐", callback_data="close")       
+    ]]   
     reply_markup=InlineKeyboardMarkup(buttons)
     
     await update.message.edit_text(
         text, reply_markup=reply_markup, parse_mode="html"
     )
-
 
 
 @Client.on_callback_query(filters.regex(r"status\((.+)\)"), group=2)
@@ -1254,26 +1241,16 @@ async def cb_status(bot, update: CallbackQuery):
     text += f"\n<b>Total Active Chats:</b> <code>{total_achats}</code>\n"
     text += f"\n<b>Total Filters:</b> <code>{total_filters}</code>"
     
-    buttons = [
-        [
-            InlineKeyboardButton
-                (
-                    "🔙 Back", callback_data="settings"
-                ),
-            
-            InlineKeyboardButton
-                (
-                    "Close 🔐", callback_data="close"
-                )
-        ]
-    ]
+    buttons = [[        
+        InlineKeyboardButton("🔙 Back", callback_data="settings"),
+        InlineKeyboardButton("Close 🔐", callback_data="close")       
+    ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await update.message.edit_text(
         text, reply_markup=reply_markup, parse_mode="html"
     )
-
 
 
 @Client.on_callback_query(filters.regex(r"about\((.+)\)"), group=2)
@@ -1291,35 +1268,20 @@ async def cb_about(bot, update: CallbackQuery):
     text=f"<i><u>Bot's Status</u></i>\n"
     text+=f"\n<b><i>Bot's Uptime:</i></b> <code>{time_formatter(time.time() - start_uptime)}</code>\n"
     text+=f"\n<b><i>Bot Funtion:</i></b> <i>Auto Filter Files</i>\n"
-    text+=f"""\n<b><i>Bot Support:</i></b> <a href="https://t.me/CrazyBotszGrp">@CrazyBotszGrp</a>\n"""
-    text+="""\n<b><i>Source Code:</i></b> <a href="https://github.com/CrazyBotsz/Adv-Filter-Bot-V2">Source</a>"""
+    text+=f"""\n<b><i>Grp Support:</i></b> <a href="https://t.me/Malayalam_Music">@malayalam_musics</a>\n"""
 
-    buttons = [
-        [
-            InlineKeyboardButton
-                (
-                    "My Dev ⚡", url="https://t.me/AlbertEinstein_TG"
-                ),
-                
-            InlineKeyboardButton
-                (
-                    "🔙 Back", callback_data="settings"
-                )
-        ],
-        [
-            InlineKeyboardButton
-                (
-                    "Close 🔐", callback_data="close"
-                )
-        ]
-    ]
+    buttons = [[
+        InlineKeyboardButton("Join Channel 💠", url="https://t.me/Malayalam_Music"),              
+        InlineKeyboardButton("🔙 Back", callback_data="settings")
+        ],[
+        InlineKeyboardButton("Close 🔐", callback_data="close")       
+    ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await update.message.edit_text(
         text, reply_markup=reply_markup, parse_mode="html"
     )
-
 
 
 @Client.on_callback_query(filters.regex(r"^(start|help|about|close)$"), group=2)
@@ -1329,12 +1291,10 @@ async def callback_data(bot, update: CallbackQuery):
 
     if query_data == "start":
         buttons = [[
-            InlineKeyboardButton('My Dev 👨‍🔬', url='https://t.me/AlbertEinstein_TG'),
-            InlineKeyboardButton('Source Code 🧾', url ='https://github.com/CrazyBotsz/Adv-Filter-Bot-V2')
-        ],[
-            InlineKeyboardButton('Support 🛠', url='https://t.me/CrazyBotszGrp')
-        ],[
-            InlineKeyboardButton('Help ⚙', callback_data="help")
+            InlineKeyboardButton('Join Channel 💠', url='https://t.me/Malayalam_Music'),
+            InlineKeyboardButton('Join Group ♻️', url ='https://t.me/Malayalam_Musics')
+            ],[
+            InlineKeyboardButton('About 🎯', callback_data="about")
         ]]
     
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1345,25 +1305,6 @@ async def callback_data(bot, update: CallbackQuery):
             parse_mode="html",
             disable_web_page_preview=True
         )
-
-
-    elif query_data == "help":
-        buttons = [[
-            InlineKeyboardButton('Home ⚡', callback_data='start'),
-            InlineKeyboardButton('About 🚩', callback_data='about')
-        ],[
-            InlineKeyboardButton('Close 🔐', callback_data='close')
-        ]]
-    
-        reply_markup = InlineKeyboardMarkup(buttons)
-        
-        await update.message.edit_text(
-            Translation.HELP_TEXT,
-            reply_markup=reply_markup,
-            parse_mode="html",
-            disable_web_page_preview=True
-        )
-
 
     elif query_data == "about": 
         buttons = [[
@@ -1378,12 +1319,8 @@ async def callback_data(bot, update: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode="html"
         )
-
-
     elif query_data == "close":
         await update.message.delete()
-
-
 
 def time_formatter(seconds: float) -> str:
     """ 
